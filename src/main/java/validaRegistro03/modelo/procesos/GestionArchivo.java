@@ -9,6 +9,10 @@ import java.util.InputMismatchException;
 public class GestionArchivo {
 
     public HashMap<String, Solicitud> cargarArchivo(String nombreArchivo) throws InputMismatchException {
+        if (!validarNombreArchivo(nombreArchivo)) {
+            throw new InputMismatchException("Nombre de archivo de lectura no válido.");
+        }
+
         HashMap<String, Solicitud> solicitudes = new HashMap<>();
 
         try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo))) {
@@ -39,5 +43,9 @@ public class GestionArchivo {
         } catch (IOException e) {
             System.out.println("Error de escritura: " + e.getMessage());
         }
+    }
+
+    public boolean validarNombreArchivo(String nombreArchivo) {
+        return nombreArchivo != null && nombreArchivo.endsWith(".txt");
     }
 }
