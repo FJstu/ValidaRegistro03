@@ -42,8 +42,8 @@ public class GestionArchivo {
             throw new InputMismatchException("Nombre de archivo de escritura no válido.");
         }
 
-        try (ObjectOutputStream inputStream = new ObjectOutputStream(new FileOutputStream(nombreArchivo))) {
-            inputStream.writeObject(solicitudes);
+        try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(nombreArchivo))) {
+            outputStream.writeObject(solicitudes);
         } catch (IOException e) {
             System.out.println("Error de escritura: " + e.getMessage());
         }
