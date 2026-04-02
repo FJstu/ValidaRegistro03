@@ -9,7 +9,7 @@ import java.util.InputMismatchException;
 public class GestionArchivo {
 
     public HashMap<String, Solicitud> cargarArchivo(String nombreArchivo) throws InputMismatchException {
-        if (!validarNombreArchivo(nombreArchivo)) {
+        if (!validarNombreArchivoLectura(nombreArchivo)) {
             throw new InputMismatchException("Nombre de archivo de lectura no válido.");
         }
 
@@ -38,6 +38,10 @@ public class GestionArchivo {
 
     public void escribirArchivo(String nombreArchivo, HashMap<String, Solicitud> solicitudes)
             throws InputMismatchException {
+        if (!validarNombreArchivoEscritura(nombreArchivo)) {
+            throw new InputMismatchException("Nombre de archivo de escritura no válido.");
+        }
+
         try (ObjectOutputStream inputStream = new ObjectOutputStream(new FileOutputStream(nombreArchivo))) {
             inputStream.writeObject(solicitudes);
         } catch (IOException e) {
@@ -45,7 +49,11 @@ public class GestionArchivo {
         }
     }
 
-    public boolean validarNombreArchivo(String nombreArchivo) {
+    public boolean validarNombreArchivoLectura(String nombreArchivo) {
         return nombreArchivo != null && nombreArchivo.endsWith(".txt");
+    }
+
+     public boolean validarNombreArchivoEscritura(String nombreArchivo) {
+        return nombreArchivo != null && nombreArchivo.endsWith(".ser");
     }
 }
