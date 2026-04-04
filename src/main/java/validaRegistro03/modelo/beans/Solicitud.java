@@ -3,6 +3,8 @@ package validaRegistro03.modelo.beans;
 import java.io.Serializable;
 
 public class Solicitud implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private String login; // (Es el nombre que usa el usuario para acceder al sistema.)
     private String clave;
     private String email;
@@ -49,6 +51,7 @@ public class Solicitud implements Serializable {
                 apellidos.length() >= 5;
     }
 
+    @Override
     public String toString() {
         return this.login+":"+this.clave+":"+this.email+":"+this.nombre+":"+this.apellidos;
     }

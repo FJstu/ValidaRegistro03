@@ -53,7 +53,7 @@ public class GestionArchivo {
         return nombreArchivo != null && nombreArchivo.endsWith(".txt");
     }
 
-     public boolean validarNombreArchivoBinario(String nombreArchivo) {
+    public boolean validarNombreArchivoBinario(String nombreArchivo) {
         return nombreArchivo != null && nombreArchivo.endsWith(".ser");
     }
 }

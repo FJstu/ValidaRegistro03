@@ -16,13 +16,13 @@ public class Controlador {
         GestionSolicitudes gestionSolicitudes = new GestionSolicitudes();
 
         try {
-            System.out.print("Nombre del archivo a leer: ");
+            System.out.print("Nombre del archivo a leer (.txt): ");
             String nombreArchivoLectura = teclado.nextLine().trim();
 
             HashMap<String, Solicitud> solicitudes = gestionArchivo.cargarArchivo(nombreArchivoLectura);
             gestionSolicitudes.mostrarSolicitudes(solicitudes);
 
-            System.out.print("\nNombre del archivo donde guardar los datos: ");
+            System.out.print("\nNombre del archivo donde guardar los datos (.ser): ");
             String nombreArchivoEscritura = teclado.nextLine().trim();
 
             gestionArchivo.escribirArchivo(nombreArchivoEscritura, solicitudes);
